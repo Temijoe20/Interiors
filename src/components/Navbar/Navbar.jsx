@@ -36,7 +36,7 @@ const Navbar = () => {
         {/* Logo section */}
         <div className="flex items-center gap-3">
           <img src={Logo} alt="logo" className="w-10" />
-          <span className="text-2xl font-bold">Temia's Interior</span>
+          <span className="text-2xl font-bold">Interior</span>
         </div>
         {/* Link section */}
         <div className="hidden md:block !space-x-12">
@@ -48,7 +48,7 @@ const Navbar = () => {
               >
                 {link.title}
               </a>
-            );  
+            );
           })}
         </div>
         {/* Button section */}
