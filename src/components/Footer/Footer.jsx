@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../../assets/logo.png";
+import Logo from "../../assets/Logo.png";
 import { FaPhone } from "react-icons/fa6";
 import { LuMessageSquare } from "react-icons/lu";
 import { motion } from "framer-motion";
@@ -18,7 +18,7 @@ const Footer = () => {
           <div className="space-y-4 font-semibold">
             <div className="flex items-center space-x-3">
               <img src={Logo} alt="" className="w-6" />
-              <p className="text-xl font-semibold">Interior</p>
+              <p className="text-xl font-semibold">Temia's Interiors</p>
             </div>
             <p>Greater Noida, Uttar Pradesh, India</p>
             <p>@ 2024 TCJ All rights reserved</p>
