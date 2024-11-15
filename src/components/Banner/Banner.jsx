@@ -1,58 +1,53 @@
-import React from "react";
-import Banner1 from "../../assets/banner.png";
-import { motion } from "framer-motion";
-import { SlideUp } from "../../animation/animate";
+import React from 'react';
+import {motion} from "framer-motion";
+import { SlideUp } from "../../Utility/animation";
 
-const Banner = () => {
+const Banner = ({ image, title, subtitle, link, tag, reverse }) => {
   return (
-    <div>
-      <div className="container py-14">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {/* image section */}
-          <div className="flex flex-col justify-center  ">
-            <motion.img
-              initial={{ x: -100, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              src={Banner1}
-              alt=""
-              className="w-[95%] md:w-full mx-auto"
-            />
-          </div>
-          {/* text section */}
-          <div className="space-y-5 flex justify-center flex-col xl:max-w-[500px] ">
-            <motion.h1
-              variants={SlideUp(0.2)}
-              initial="initial"
-              whileInView="animate"
-              className="text-4xl font-bold font-serif"
-            >
-              We Believe that a team makes any project better
-            </motion.h1>
-            <motion.p
-              variants={SlideUp(0.4)}
-              initial="initial"
-              whileInView="animate"
-              className="text-gray-500 text-sm leading-7"
-            >
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit
-              earum accusantium tempore nam aliquid{" "}
-            </motion.p>
-            <div>
-              <motion.button
-                variants={SlideUp(0.6)}
-                initial="initial"
-                whileInView="animate"
-                className="primary-btn bg-black text-white shadow-[5px_5px_0px_0px_#6c6c6c]"
-              >
-                Discover Now
-              </motion.button>
-            </div>
-          </div>
+    <div className='bg-[#f9f9f9]'>
+      <div className='container'>
+        <div className='grid grid-cols-1 md:grid-cols-2 space-y-6 md:space-y-0'>
+        {/* banner Image Section */}
+        <div className={`flex justify-start items-center ${
+              reverse && "md:order-last md:justify-end"
+            }`}>
+          <motion.img 
+          initial={{ opacity: 0, scale: 0.5 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ type: "spring", stiffness: 100,
+            delay: 0.2}}
+          src={image} 
+          alt="" 
+          className='w-[400px] h-full object-cover'/>
         </div>
-      </div>
+        {/* Banner text Section */}
+        <div className='flex flex-col justify-center text-center md:text-left space-y-4 lg:max-w-[500px]'>
+          <motion.p 
+            variants={SlideUp(0.5)}
+            initial="hidden"
+            whileInView={"visible"}
+            className='text-sm text-orange-600 font-semibold capitalize'>{tag}</motion.p>
+          <motion.p 
+          variants={SlideUp(0.7)}
+          initial="hidden"
+          whileInView={"visible"}
+          className='text-xl lg:text-2xl font-semibold capitalize'>{title}</motion.p>
+          <motion.p
+          variants={SlideUp(0.9)}
+          initial="hidden"
+          whileInView={"visible"}
+          className='text-sm text-slate-500'>{subtitle}</motion.p>
+        <motion.div 
+        variants={SlideUp(1.1)}
+        initial="hidden"
+        whileInView={"visible"}
+        className='flex justify-center md:justify-start'>
+          <button className='primary-btn !mt-5'>Get Started</button>
+        </motion.div>
+        </div>
+        </div>
+      </div> 
     </div>
   );
 };
-
 export default Banner;

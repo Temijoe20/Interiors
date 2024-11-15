@@ -1,64 +1,56 @@
 import React from "react";
-import Logo from "../../assets/Logo.png";
-//  import Logo from "../../assets/logo.png";
-import { motion } from "framer-motion";
+import { NavbarMenu } from "../../mockData/data.js";
+ import { MdComputer, MdMenu } from "react-icons/md";
+ import { motion } from "framer-motion";
+ import ResponsiveMenu from "./ResponsiveMenu.jsx";
+const Navbar=() => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  return(
+      <>
+    <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.5, delay: 0.5 }}
+    >
+      <div className="container flex justify-between items-center py-6">
+        {/* Logo Section */}
 
-const NavLinks = [
-  {
-    id: 1,
-    title: "About",
-    link: "#",
-  },
-  {
-    id: 2,
-    title: "Services",
-    link: "#",
-  },
-  {
-    id: 3,
-    title: "Project",
-    link: "#",
-  },
-  {
-    id: 4,
-    title: "Contact",
-    link: "#",
-  },
-];
-const Navbar = () => {
-  return (
-    <>
-      <motion.div
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="container py-6 flex justify-between items-center"
-      >
-        {/* Logo section */}
-        <div className="flex items-center gap-3">
-          <img src={Logo} alt="logo" className="w-10" />
-          <span className="text-2xl font-bold">Temia's Interior</span>
+        <div className="text-2xl flex items-center gap-2 font-bold">
+          <MdComputer className="text-3xl text-secondary" />
+          <p>E-Tutor</p>
         </div>
-        {/* Link section */}
-        <div className="hidden md:block !space-x-12">
-          {NavLinks.map((link) => {
-            return (
-              <a
-                href={link.link}
-                className="inline-block mx-4 text-lg font-semibold"
-              >
-                {link.title}
-              </a>
-            );
-          })}
+        {/* Menu Section */}
+        <div className="hidden lg:block">
+          <ul className="flex items-center gap-6">
+          {NavbarMenu.map((item)=> {
+            return(
+          
+            <li key={item.id}>
+              <a 
+                href={item.link}
+                className="inline-block text-gray-600 text-sm xl:text-base py-1 px-3 xl:px-3 hover:text-secondary transition-all duration-300 font-semibold"
+                >
+                  {item.title}
+                </a>
+            </li>
+              );
+            })}
+          </ul>
         </div>
-        {/* Button section */}
-        <div>
-          <button className="primary-btn">Try For Free</button>
-        </div>
-      </motion.div>
+            {/* CTA BUTTON section */}
+          <div className="hidden lg:block space-x-6">
+            <button className="font-semibold">Sign in</button>
+            <button className="text-white bg-secondary font-semibold rounded-full px-6 py-2">Register</button>
+          </div>
+          {/* Mobile Hamburger Menu */}
+          <div className="lg:hidden" onClick={() => setIsOpen(!isOpen)}>
+            <MdMenu className="text-4xl" />
+          </div>
+      </div>
+    </motion.div>
+    {/* Mobile Sidebar section */}
+    <ResponsiveMenu isOpen={isOpen} />
     </>
   );
 };
-
 export default Navbar;

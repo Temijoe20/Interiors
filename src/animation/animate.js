@@ -1,31 +1,31 @@
 export const SlideUp = (delay) => {
     return {
-      initial: {
-        y: 50,
+      hidden: {
         opacity: 0,
+        y: 100,
       },
-      animate: {
-        y: 0,
+      visible: {
         opacity: 1,
+        y: 0,
         transition: {
-          duration: 0.5,
-          delay,
+          duration: 1,
+          delay: delay,
         },
       },
     };
   };
   export const SlideLeft = (delay) => {
     return {
-      initial: {
-        x: 50,
-        opacity: 0,
+      hidden: {
+      opacity: 0,
+      x: 100,
       },
-      animate: {
-        x: 0,
+      visible: {
         opacity: 1,
+        x: 0,
         transition: {
-          duration: 0.5,
-          delay,
+          duration: 1,
+          delay: delay,
         },
       },
     };

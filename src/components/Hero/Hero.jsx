@@ -1,62 +1,40 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { SlideUp } from '../../animation/animate';
-import HeroPng from "../../assets/hero.png"
-
-const Hero = () => {
+import React from 'react'
+import HeroImg from "../../assets/hero.png";
+import { FaPlay } from 'react-icons/fa';
+function Hero() {
   return (
     <>
-    <div className= "container">
-        <div className='grid grid-cols-1 md:grid-cols-2 md:min-h-[600px] gap-10'>
-          {/* Text-section */}
-            <div className='flex flex-col justify-center gap-7 md:pr-8 xl:pr-52 text-center md:text-left pt-20 md:pt-0 px-10'>
-                <motion.h1 
-                  variants={SlideUp(0.2)}
-                  initial="initial"
-                  animate="animate"
-                className='text-4xl font-bold font-serif'>
-                SKETCH LUXURY INTERIOR DESIGN</motion.h1>
-                <motion.p
-                  variants={SlideUp(0.5)}
-                  initial="initial"
-                  animate="animate"
-                  className="text-sm md:text-base text-gray-500 leading-7">
-                  Bring your dream to life with one-on-one design help & hand picked
-                  products tailored to your style, space and budget.
-                </motion.p>
-                {/* Button Section */}
-                <div className='space-x-4'>
-                  <motion.button
-                    variants={SlideUp(0.8)}
-                    initial="initial"
-                    animate="animate"
-                    className="primary-btn uppercase bg-black text-white shadow-[5px_5px_0px_0px_#6c6c6c]">
-                      Get started
-                  </motion.button>
-                  <motion.button
-                    variants={SlideUp(1.1)}
-                    initial="initial"
-                    animate="animate"
-                    className= "primary-btn uppercase">
-                      Contact Us
-                  </motion.button>
+        <div className='container grid grid-cols-1 md:grid-cols-2 min-h-[650px] relative'>
+            {/* Brand Info */}
+            <div className='flex flex-col justify-center py-14 md:pr-16 xl:pr-40 md:py-0'>
+                <div className='text-center md:text-left space-y-6'>
+                    <p 
+                    className='text-orange-600 uppercase font-semibold'>
+                        100% Satisfaction Guarantee
+                    </p>
+                    <h1 className='text-5xl font-semibold lg:text-6xl !leading-tight'>
+                        Find your Perfect <span className='text-primary'>Tutor</span>
+                    </h1>
+                    <p>
+                        We help you find perfect tutor for 1-on-1 lessons.
+                        It is completely free and private
+                    </p>
+                    <div className='flex gap-8 justify-center md:justify-start !mt-8 items-center'>
+                    <button className='primary-btn'>Get Started</button>
+                    <button className='flex justify-end items-center gap-2 font-semibold'>See how it works
+                        <span className='w-10 h-10 bg-secondary/15 rounded-full flex justify-center
+                        items-center'><FaPlay className='text-secondary'/></span>
+                    </button>
+                    </div>
                 </div>
             </div>
-            {/* Image Section */}
-            <div className='flex flex-col items-center justify-center'>
-              <motion.img
-              initial={{ x: 100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition= {{ duration: 0.5, delay: 0.5 }} 
-              src={HeroPng}
-              alt="" 
-              className='w-[80%] md:w-[700px] object-cover'/>
-            
-            
+            {/* Hero image */}
+            <div className='flex justify-center items-center'>
+                <img src={HeroImg} alt="" 
+                className='w-[350px] md:w-[550px] xl:w-[700px]'
+                />
             </div>
-            
         </div>
-    </div>
     </>
   )
 }
